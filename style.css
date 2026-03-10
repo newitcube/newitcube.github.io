@@ -1536,3 +1536,27 @@ h4 { font-size: 1.5rem; }
         height: auto;
     }
 }
+
+@media (max-width: 768px) {
+    /* Заставляем карточки курсов встать в одну колонку */
+    .courses-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 20px !important;
+        padding: 0 !important;
+    }
+
+    /* Убеждаемся, что карточка не шире экрана */
+    .course-card {
+        width: 100% !important;
+        margin: 0 0 20px 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Исправляем отступы внутри карточки, если они слишком большие */
+    .course-meta {
+        flex-wrap: wrap; /* Мета-данные (4 месяца и т.д.) тоже перенесутся */
+        gap: 10px;
+    }
+}
