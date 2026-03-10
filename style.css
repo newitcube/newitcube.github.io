@@ -1503,36 +1503,36 @@ h4 { font-size: 1.5rem; }
     }
 }
 
-/* Убираем горизонтальную прокрутку у всего сайта */
-html, body {
-    overflow-x: hidden;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-}
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    /* 1. Запрещаем всему выходить за границы */
+    .container {
+        padding: 0 1rem;
+        overflow: hidden;
+    }
 
-/* Исправляем контейнер, чтобы он не вылезал за края */
-.container {
-    max-width: 100%;
-    padding-left: 15px;
-    padding-right: 15px;
-    box-sizing: border-box;
-}
+    /* 2. Статистика (иконки VK и др.) в столбик */
+    .hero-stats {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
 
-/* Настройка мобильного меню, чтобы оно не создавало полосу */
-.mobile-menu {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100%; /* Или 300px, если меню боковое */
-    height: 100vh;
-    z-index: 1000;
-    background: #fff; /* Твой цвет фона */
-    transform: translateX(101%); /* Прячем за край экрана */
-    transition: transform 0.3s ease;
-}
+    /* 3. Уменьшаем шрифт заголовка, чтобы он не распирал экран */
+    .hero-title {
+        font-size: 1.5rem !important;
+        word-wrap: break-word;
+    }
 
-.mobile-menu.active {
-    transform: translateX(0); /* Показываем при клике */
-}
+    /* 4. ГЛАВНОЕ: Прячем или сжимаем превью кода, которое обычно всё портит */
+    .hero-visual {
+        display: none; /* Проще всего скрыть на телефонах */
+    }
 
+    /* 5. Если есть картинки в статистике, ограничиваем их */
+    .stat-number img {
+        max-width: 100%;
+        height: auto;
+    }
+}
