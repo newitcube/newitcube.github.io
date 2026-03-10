@@ -1536,29 +1536,3 @@ html, body {
     transform: translateX(0); /* Показываем при клике */
 }
 
-/* Универсальное исправление для мобильных устройств */
-@media (max-width: 768px) {
-    .container, .courses-grid, .faq-grid, .hero, .header {
-        width: 100% !important;
-        max-width: 100% !important;
-        padding-left: 15px !important;
-        padding-right: 15px !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        box-sizing: border-box !important;
-        overflow-wrap: break-word; /* Чтобы длинные слова не растягивали экран */
-    }
-
-    /* Исправляем сетку курсов, чтобы карточки встали в одну колонку */
-    .courses-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    /* Уменьшаем шрифты заголовков, если они слишком большие */
-    h1, h2 {
-        font-size: 1.5rem !important;
-        line-height: 1.2;
-    }
-}
