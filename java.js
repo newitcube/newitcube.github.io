@@ -1,28 +1,20 @@
-// Добавьте управление камерой колесиком
-window.addEventListener('wheel', (e) => {
-    camera.position.z += e.deltaY * 0.05;
-    camera.position.z = Math.max(10, Math.min(50, camera.position.z));
-});
+document.addEventListener('DOMContentLoaded', () => {
+    // Находим все кнопки вопросов в FAQ
+    const faqQuestions = document.querySelectorAll('.faq-question');
 
-// Добавьте реакцию на движение мыши
-document.addEventListener('mousemove', (e) => {
-    const x = (e.clientX / window.innerWidth - 0.5) * 2;
-    const y = -(e.clientY / window.innerHeight - 0.5) * 2;
-    
-    gsap.to(camera.position, {
-        x: x * 3,
-        y: y * 2,
-        duration: 2,
-        ease: "power2.out"
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const currentItem = question.parentElement;
+
+            // Если нужно, чтобы при открытии одного вопроса закрывались другие (аккордеон):
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== currentItem) {
+                    item.classList.remove('active');
+                }
+            });
+
+            // Переключаем класс active у текущего элемента
+            currentItem.classList.toggle('active');
+        });
     });
-});
-
-// Быстрые клавиши
-document.addEventListener('keydown', (e) => {
-    if (e.key >= '1' && e.key <= '5') {
-        const index = parseInt(e.key) - 1;
-        if (buttons[index]) {
-            buttons[index].button.click();
-        }
-    }
 });
