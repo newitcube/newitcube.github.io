@@ -65,11 +65,11 @@ print(f"Сумма: {result}")
                     indexURL: "/pyodide/"
                 });
 
-                output.innerText = ">>> Интерпретатор готов.\n";
+                output.innerText = ">>> Python 3.12 готов к работе.\n";
                 statusText.innerText = "Готов";
                 statusText.className = "status-ready";
                 runBtn.disabled = false;
-                runBtn.innerText = "▶ Запустить код";
+                runBtn.innerText = "▶ Запустить код (Ctrl+Enter)";
             } catch (err) {
                 output.innerText = "❌ Ошибка загрузки файлов из /pyodide/:\n" + err.message;
                 statusText.innerText = "Ошибка";
