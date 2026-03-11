@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Python Web Editor</title>
-    <!-- Подключаем Pyodide -->
+    <!-- Подключаем скрипт Pyodide -->
     <script src="https://cdn.jsdelivr.net"></script>
     <style>
         body { display: flex; height: 100vh; margin: 0; background: #2d2d2d; color: white; font-family: sans-serif; flex-direction: row; }
         .panel { flex: 1; display: flex; flex-direction: column; min-height: 0; }
-        .label { background: #1e1e1e; padding: 8px 15px; font-size: 12px; color: #aaa; text-transform: uppercase; border-bottom: 1px solid #3d3d3d; display: flex; justify-content: space-between; }
-        textarea { flex: 1; padding: 15px; font-family: 'Consolas', monospace; font-size: 14px; border: none; background: #252526; color: #d4d4d4; outline: none; }
-        #output { flex: 1; padding: 15px; background: #1a1a1a; color: #00ff00; font-family: 'Consolas', monospace; overflow-y: auto; white-space: pre-wrap; }
-        .run-btn { background: #4CAF50; color: white; border: none; padding: 5px 15px; cursor: pointer; border-radius: 3px; }
-        .run-btn:disabled { background: #666; }
+        .label { background: #1e1e1e; padding: 8px 15px; font-size: 12px; color: #aaa; text-transform: uppercase; border-bottom: 1px solid #3d3d3d; display: flex; justify-content: space-between; align-items: center; }
+        textarea { flex: 1; padding: 15px; font-family: 'Consolas', monospace; font-size: 14px; border: none; background: #252526; color: #d4d4d4; outline: none; resize: none; tab-size: 4; }
+        #output { flex: 1; padding: 15px; background: #1a1a1a; color: #00ff00; font-family: 'Consolas', monospace; overflow-y: auto; white-space: pre-wrap; font-size: 14px; }
+        .run-btn { background: #4CAF50; color: white; border: none; padding: 5px 15px; cursor: pointer; border-radius: 3px; font-weight: bold; }
+        .run-btn:disabled { background: #666; cursor: not-allowed; }
+        @media (max-width: 768px) { body { flex-direction: column; } .panel { height: 50vh; } }
     </style>
 </head>
 <body>
@@ -21,61 +22,85 @@
     <div class="panel">
         <div class="label">
             <span>🐍 Python Код</span>
-            <button class="run-btn" id="run-btn">▶ Запустить (Ctrl+Enter)</button>
+            <button class="run-btn" id="run-btn" disabled>⌛ Загрузка...</button>
         </div>
-        <textarea id="code" spellcheck="false"># Напиши свой код на Python
-print("Загрузка интерпретатора...")
-name = "World"
-for i in range(5):
-    print(f"Hello {name} {i}!")
+        <textarea id="code" spellcheck="false" autofocus># Напиши свой код на Python
+name = "IT Cube"
+for i in range(3):
+    print(f"Привет от {name}, итерация {i+1}")
 
-def square(n):
-    return n * n
+def test_func(x):
+    return x * 10
 
-print(f"Квадрат 5: {square(5)}")</textarea>
+print(f"Результат функции: {test_func(5)}")</textarea>
     </div>
 
     <div class="panel">
         <div class="label"><span>📡 Консоль вывода</span></div>
-        <div id="output">Загрузка Pyodide...</div>
+        <div id="output">Инициализация...</div>
     </div>
 
     <script>
         const textarea = document.getElementById('code');
         const output = document.getElementById('output');
         const runBtn = document.getElementById('run-btn');
-        let pyodide;
+        let pyodide = null;
 
-        // Инициализация Python
+        // 1. Инициализация Python
         async function initPyodide() {
-            pyodide = await loadPyodide();
-            output.innerText = "Готов к работе!";
-            runBtn.disabled = false;
-        }
-        initPyodide();
+            try {
+                output.innerText = "⏳ Скачивание Python компонентов (около 30MB)...\nЭто может занять до 30 секунд при первом запуске.";
 
+                // indexURL должен вести на папку с WASM файлами
+                pyodide = await loadPyodide({
+                    indexURL: "https://cdn.jsdelivr.net"
+                });
+
+                output.innerText = "✅ Python готов! Напишите код и нажмите 'Запустить'.";
+                runBtn.disabled = false;
+                runBtn.innerText = "▶ Запустить (Ctrl+Enter)";
+            } catch (err) {
+                output.innerText = "❌ Ошибка загрузки Pyodide:\n" + err.message;
+                console.error(err);
+            }
+        }
+
+        // 2. Функция запуска кода
         async function runPython() {
             if (!pyodide) return;
-            output.innerText = "Выполнение...\n";
 
-            // Перехват print() в нашу консоль
+            // Очищаем консоль и настраиваем вывод print()
+            output.innerText = "";
             pyodide.setStdout({ batched: (str) => {
                 output.innerText += str + "\n";
             }});
 
             try {
+                // Выполняем код из текстового поля
                 await pyodide.runPythonAsync(textarea.value);
             } catch (err) {
-                output.innerText += "\nОшибка:\n" + err;
+                output.innerText += "\n⚠️ Ошибка в коде Python:\n" + err;
             }
         }
 
+        // Обработка Tab
+        textarea.addEventListener('keydown', function(e) {
+            if (e.key === 'Tab') {
+                e.preventDefault();
+                const start = this.selectionStart;
+                const end = this.selectionEnd;
+                this.value = this.value.substring(0, start) + "    " + this.value.substring(end);
+                this.selectionStart = this.selectionEnd = start + 4;
+            }
+            if (e.ctrlKey && e.key === 'Enter') {
+                runPython();
+            }
+        });
+
         runBtn.addEventListener('click', runPython);
 
-        // Горячие клавиши
-        textarea.addEventListener('keydown', (e) => {
-            if (e.ctrlKey && e.key === 'Enter') runPython();
-        });
+        // Запуск процесса загрузки
+        initPyodide();
     </script>
 </body>
 </html>
