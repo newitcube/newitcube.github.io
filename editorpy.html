@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Web Editor</title>
+    <!-- Подключаем Pyodide -->
+    <script src="https://cdn.jsdelivr.net"></script>
+    <style>
+        body { display: flex; height: 100vh; margin: 0; background: #2d2d2d; color: white; font-family: sans-serif; flex-direction: row; }
+        .panel { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+        .label { background: #1e1e1e; padding: 8px 15px; font-size: 12px; color: #aaa; text-transform: uppercase; border-bottom: 1px solid #3d3d3d; display: flex; justify-content: space-between; }
+        textarea { flex: 1; padding: 15px; font-family: 'Consolas', monospace; font-size: 14px; border: none; background: #252526; color: #d4d4d4; outline: none; }
+        #output { flex: 1; padding: 15px; background: #1a1a1a; color: #00ff00; font-family: 'Consolas', monospace; overflow-y: auto; white-space: pre-wrap; }
+        .run-btn { background: #4CAF50; color: white; border: none; padding: 5px 15px; cursor: pointer; border-radius: 3px; }
+        .run-btn:disabled { background: #666; }
+    </style>
+</head>
+<body>
+
+    <div class="panel">
+        <div class="label">
+            <span>🐍 Python Код</span>
+            <button class="run-btn" id="run-btn">▶ Запустить (Ctrl+Enter)</button>
+        </div>
+        <textarea id="code" spellcheck="false"># Напиши свой код на Python
+print("Загрузка интерпретатора...")
+name = "World"
+for i in range(5):
+    print(f"Hello {name} {i}!")
+
+def square(n):
+    return n * n
+
+print(f"Квадрат 5: {square(5)}")</textarea>
+    </div>
+
+    <div class="panel">
+        <div class="label"><span>📡 Консоль вывода</span></div>
+        <div id="output">Загрузка Pyodide...</div>
+    </div>
+
+    <script>
+        const textarea = document.getElementById('code');
+        const output = document.getElementById('output');
+        const runBtn = document.getElementById('run-btn');
+        let pyodide;
+
+        // Инициализация Python
+        async function initPyodide() {
+            pyodide = await loadPyodide();
+            output.innerText = "Готов к работе!";
+            runBtn.disabled = false;
+        }
+        initPyodide();
+
+        async function runPython() {
+            if (!pyodide) return;
+            output.innerText = "Выполнение...\n";
+
+            // Перехват print() в нашу консоль
+            pyodide.setStdout({ batched: (str) => {
+                output.innerText += str + "\n";
+            }});
+
+            try {
+                await pyodide.runPythonAsync(textarea.value);
+            } catch (err) {
+                output.innerText += "\nОшибка:\n" + err;
+            }
+        }
+
+        runBtn.addEventListener('click', runPython);
+
+        // Горячие клавиши
+        textarea.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 'Enter') runPython();
+        });
+    </script>
+</body>
+</html>
