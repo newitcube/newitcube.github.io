@@ -86,13 +86,13 @@
   </div>
 </div>
 
-
+<!-- Кнопка - Начать учиться
                     <div class="hero-actions">
                         <a href="https://newitcube.github.io/editor.html" target="_blank" class="btn btn-primary btn-large">
                             <i class="fas fa-play-circle"></i> Начать учиться
                         </a>
                     </div>
-                    
+ -->
                     <div class="hero-features">
                         <div class="feature-item">
                             <i class="fas fa-check-circle"></i>
@@ -104,7 +104,7 @@
                         </div>
                         <div class="feature-item">
                             <i class="fas fa-check-circle"></i>
-                            <span>Конкурс «Студенческий стартап»</span>
+                            <span>Конкурс «Студенческий стартап».  Грант 1 000 000 рублей!</span>
                         </div>
                     </div>
                 </div>
@@ -117,31 +117,42 @@
                                 <span class="dot yellow"></span>
                                 <span class="dot green"></span>
                             </div>
-                            <span class="editor-title">main.py</span>
+                            <span class="editor-title">index.html</span>
                             <div class="editor-actions">
                                 <i class="fas fa-play"></i>
                             </div>
                         </div>
-                        <pre class="code-preview"><code># Первая программа на Python
-print("Привет, мир!")
-
-# Решение задачи с урока
-def calculate_sum(a, b):
-    return a + b
-
-# Запустите код и увидите результат!
-result = calculate_sum(5, 3)
-print(f"Сумма: {result}")
-
-# Интерактивное задание:
-# Попробуйте изменить числа выше
-# и нажмите "Запустить код"</code></pre>
+                        <pre class="code-preview"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ru&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;style&gt;
+      body { text-align: center; padding-top: 20px; }
+      h1 { color: blue; }
+      button { background-color: gold; }
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Привет!&lt;/h1&gt;
+    &lt;p&gt;Начни менять код.&lt;/p&gt;
+    &lt;div&gt;
+      &lt;p&gt;Кнопка нажата &lt;span id=&quot;counter&quot;&gt;0&lt;/span&gt; раз(а)&lt;/p&gt;
+      &lt;button onclick=&quot;incrementCounter()&quot;&gt;Нажми меня&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+      let count = 0;
+      function incrementCounter() {
+        count++;
+        document.getElementById(&#39;counter&#39;).textContent = count;
+      }
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
                         <div class="editor-footer">
                             <div class="output-preview">
                                 <span class="output-label">Вывод:</span>
                                 <div class="output-content">
-                                    <span class="output-line">Привет, мир!</span>
-                                    <span class="output-line">Сумма: 8</span>
+                                    <span class="output-line">Принажатии на кнопку меняется число кликов</span>
                                 </div>
                             </div>
                         </div>
@@ -223,10 +234,11 @@ print(f"Сумма: {result}")
         </div>
     </div>
 
-    <!-- Кнопка-ссылка -->
-    <a href="https://newitcube.github.io/editor.html" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-block" style="text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px;">
-        <i class="fas fa-play"></i> Начать курс
-    </a>
+     <!-- Кнопка-ссылка  -->
+                        <a href="https://newitcube.github.io/development.html" rel="noopener noreferrer" class="btn btn-outline btn-block" style="text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px;">
+    <i class="fas fa-info-circle"></i> Подробнее
+</a>
+
 </div>
 
 
@@ -301,7 +313,7 @@ print(f"Сумма: {result}")
                                 <span>Командный</span>
                             </div>
                         </div>
-                        
+     <!-- Кнопка-ссылка  -->
                         <a href="https://gitcube.ru" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-block" style="text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px;">
     <i class="fas fa-info-circle"></i> Подробнее
 </a>

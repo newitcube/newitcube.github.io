@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GITcube — интерактивное обучение программированию с нуля</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Шапка -->
+    <header class="header">
+        <div class="container">
+            <a href="https://gitcube.ru/" target="_blank" class="logo">
+                <i class="fas fa-cube"></i> GITcube
+            </a>
+            <nav class="nav">
+                <a href="#courses" class="nav-link"><i class="fas fa-graduation-cap"></i> Курсы</a>
+                <a href="#format" class="nav-link"><i class="fas fa-video"></i> Формат</a>
+
+                <a href="#faq" class="nav-link"><i class="fas fa-question-circle"></i> FAQ</a>
+            </nav>
+            <div class="header-actions">
+                <button class="btn btn-outline btn-small" id="loginBtn">Войти</button>
+            </div>
+            <button class="burger-menu" id="burgerMenu">☰</button>
+        </div>
+    </header>
+
+    <!-- Мобильное меню -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <a href="/" class="logo">
+                <i class="fas fa-cube"></i> GITcube
+            </a>
+            <button class="close-menu" id="closeMenu">×</button>
+        </div>
+        <nav class="mobile-nav">
+            <a href="#courses" class="mobile-nav-link"><i class="fas fa-graduation-cap"></i> Курсы</a>
+            <a href="#format" class="mobile-nav-link"><i class="fas fa-video"></i> Формат</a>
+            <a href="#faq" class="mobile-nav-link"><i class="fas fa-question-circle"></i> FAQ</a>
+        </nav>
+        <div class="mobile-actions">
+            <button class="btn btn-outline btn-block">Войти</button>
+            <button class="btn btn-primary btn-block">Начать учиться</button>
+        </div>
+    </div>
+
+    <main class="main">
+
+<section class="hero">
+    <div class="container hero-flex-container"> <!-- Добавили класс для флекса -->
+
+        <!-- Первый блок (левый) -->
+        <div class="hero-block">
+            <h1 class="hero-title">Веб-разработка</h1>
+            <p class="hero-subtitle">
+            <p><strong>Ключевые составляющие процесса:</strong></p>
+<ul>
+<li><strong>HTML (HyperText Markup Language):</strong> Создает каркас сайта (заголовки, абзацы, списки, изображения).</li>
+<li><strong>CSS (Cascading Style Sheets):</strong> Отвечает за внешний вид, шрифты, цвета, расположение элементов и верстку.</li>
+<li><strong>JavaScript:</strong> Добавляет интерактивность (слайдеры, всплывающие окна, обработка данных). </li>
+
+</ul>
+            </p>
+        </div>
+
+        <!-- Второй блок (правый) -->
+        <div class="hero-block">
+            <h1 class="hero-title">Основные этапы</h1>
+            <p class="hero-subtitle">
+<p><strong>Что дает обучение:</strong></p>
+<ul>
+<li><strong>Адаптивная верстка:</strong> Создание сайтов, подстраивающихся под экраны смартфонов, планшетов и ПК.</li>
+<li><strong>Профессиональная верстка:</strong> Использование современных технологий (Flexbox, Grid) для создания сложных интерфейсов.</li>
+<li><strong>Подготовка к карьере:</strong> Базовые навыки, необходимые Frontend-разработчикам, верстальщикам и веб-дизайнерам.</li>
+
+</ul>
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+
+        <!-- Популярные курсы -->
+        <section id="courses" class="courses">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Курс Frontend-разработчика</h2>
+                    <p class="section-subtitle">Самое востребованное направление для старта в IT</p>
+                </div>
+
+                <div class="courses-grid">
+                    <!-- Веб-разработка -->
+                    <div class="course-card">
+                        <div class="course-badge popular">Популярный</div>
+                        <div class="course-header"><div class="course-icon"><i class="fas fa-code"></i></div></div>
+                        <h3 class="course-title">Веб-разработка с нуля</h3>
+                        <p class="course-description">Создавайте современные сайты на HTML, CSS, JavaScript. Проекты для портфолио, включая интернет-магазин.
+                        </p>
+                        <div class="course-meta">
+                            <div class="meta-item"><i class="fas fa-clock"></i> <span>3 месяца</span></div>
+                            <div class="meta-item"><i class="fas fa-signal"></i> <span>Начальный</span></div>
+                        </div>
+                        <a href="https://newitcube.github.io/editor.html" target="_blank" class="btn btn-outline btn-block" style="text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                            <i class="fas fa-play"></i> Начать курс
+                        </a>
+                    </div>
+
+                    <!-- Markdown-разработка -->
+                    <div class="course-card">
+                        <div class="course-badge new">Новый</div>
+                        <div class="course-header"><div class="course-icon"><i class="fas fa-code"></i></div></div>
+                        <h3 class="course-title">Разработка в Markdown
+                        </h3>
+                        <p class="course-description">Создавайте структурированные, читабельные тексты (статей, документации, заметок).
+                        </p>
+                        <div class="course-meta">
+                            <div class="meta-item"><i class="fas fa-clock"></i> <span>1 месяц</span></div>
+                            <div class="meta-item"><i class="fas fa-signal"></i> <span>Начальный</span></div>
+                        </div>
+                        <a href="https://newitcube.github.io/editormd.html" target="_blank" class="btn btn-outline btn-block" style="text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                            <i class="fas fa-play"></i> Начать курс
+                        </a>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+
+                <!-- Формат обучения -->
+        <section id="format" class="format">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Как проходит обучение</h2>
+                    <p class="section-subtitle">Пошаговый путь от новичка до специалиста</p>
+                </div>
+
+                <div class="format-timeline">
+                    <div class="timeline-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <div class="step-icon">
+                                <i class="fas fa-video"></i>
+                            </div>
+
+                            <h3>Видеоуроки</h3>
+                            <p>Смотрите видеоуроки с теорией и живыми примерами кода</p>
+                            <p>&nbsp;</p>
+
+                            <div class="hero-actions">
+                        <a href="https://newitcube.github.io/editor.html" target="_blank" class="btn btn-primary btn-large">
+                            <i class="fas fa-play-circle"></i> Начать учиться
+                        </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="timeline-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <div class="step-icon">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <h3>Активная практика</h3>
+                            <p>Выполняйте задания прямо в браузере, сохраняйте и отправляйте на проверку</p>
+                            <p>&nbsp;</p>
+
+                            <div class="hero-actions">
+                        <a href="https://newitcube.github.io/editor.html" target="_blank" class="btn btn-primary btn-large">
+                            <i class="fas fa-play-circle"></i> Начать учиться
+                        </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <div class="step-icon">
+                                <i class="fas fa-tasks"></i>
+                            </div>
+                            <h3>Проектная работа</h3>
+                            <p>Собирайте портфолио из реальных проектов, которые будут оценивать преподаватели</p>
+                            <p>&nbsp;</p>
+
+                            <div class="hero-actions">
+                        <a href="https://newitcube.github.io/editor.html" target="_blank" class="btn btn-primary btn-large">
+                            <i class="fas fa-play-circle"></i> Начать учиться
+                        </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <div class="step-icon">
+                                <i class="fas fa-comment-dots"></i>
+                            </div>
+                            <h3>Обратная связь</h3>
+                            <p>Получайте code review от экспертов, разбирайте ошибки и улучшайте свой код</p>
+                            <p>&nbsp;</p>
+
+                            <div class="hero-actions">
+                        <a href="https://newitcube.github.io/editor.html" target="_blank" class="btn btn-primary btn-large">
+                            <i class="fas fa-play-circle"></i> Начать учиться
+                        </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+
+
+              <!-- FAQ -->
+        <section id="faq" class="faq">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Часто задаваемые вопросы</h2>
+                    <p class="section-subtitle">Ответы на самые популярные вопросы по веб-разработке</p>
+
+                </div>
+
+                <div class="faq-grid">
+                    <div class="faq-column">
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                <span>С какого возраста можно начинать обучение?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Мы принимаем учеников с 12 лет. Для школьников младше 12 лет мы рекомендуем начать с курса "Основы логики и алгоритмов", который специально адаптирован для детей.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                <span>Что если я пропущу занятие?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Все занятия доступны в записи. Вы можете смотреть их в любое удобное время и задавать вопросы преподавателю в чате.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                <span>Нужен ли опыт программирования?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Нет, большинство курсов рассчитаны на новичков. Мы начинаем с самых основ: установки программ, синтаксиса языка, базовых конструкций.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-column">
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                <span>Какое оборудование нужно для обучения?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Достаточно смартфона, планшета, мини ПК, ТВ приставки с браузером, обычного компьютера или ноутбука с доступом в интернет. Для программирования подойдёт даже не самый мощный компьютер.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                <span>Даёте ли вы диплом по окончании курса?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Да, после успешного завершения курса и защиты дипломного проекта вы получите электронный диплом, который можно добавить в LinkedIn и резюме. Но главное то, что у вас появляется возможность участвовать в государственных грантах и получить возможность создать свой стартап.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                <span>Какие есть возможности оценить качество обучения?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Качество обучения зависит от учебной программы и усилий студента, наша программа предлагает глубокое обучение основанное на идеях концепции открытого исходного кода.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-contact">
+                    <p>Не нашли ответ на свой вопрос?</p>
+                    <a href="#contact" class="btn btn-outline">
+                        <i class="fas fa-question-circle"></i> Задать вопрос
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col footer-col-main">
+                    <a href="/" class="logo footer-logo">
+                        <i class="fas fa-cube"></i> GITcube
+                    </a>
+                    <p class="footer-description">Интерактивное обучение программированию для школьников, студентов и молодежи, планирующих запуск своего проекта.</p>
+
+                    <div class="footer-contacts">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>hello@gitcube.ru</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>8 (924) 774-20-54</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Гусиноозерск, ул. Карла Маркса, 29, каб. 26</span>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="ВКонтакте">
+                            <i class="fab fa-vk"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Telegram">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-title">Курсы</h4>
+                    <a href="#" class="footer-link">Веб-разработка</a>
+                    <a href="#" class="footer-link">Python</a>
+                    <a href="#" class="footer-link">Java</a>
+                    <a href="#" class="footer-link">JavaScript</a>
+
+                    <a href="#" class="footer-link">Все курсы</a>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-title">О нас</h4>
+                    <a href="#" class="footer-link">Отзывы</a>
+                    <a href="#" class="footer-link">Истории успеха</a>
+                    <a href="#" class="footer-link">Вакансии</a>
+                    <a href="#" class="footer-link">Блог</a>
+                    <a href="#" class="footer-link">Контакты</a>
+                </div>
+
+                <div class="footer-col">
+                 <!--
+                    <h4 class="footer-title">Помощь</h4>
+                    <a href="#" class="footer-link">FAQ</a>
+                    <a href="#" class="footer-link">Техподдержка</a>
+                    <a href="#" class="footer-link">Политика конфиденциальности</a>
+                -->
+                </div>
+
+                <div class="footer-col">
+                 <!--
+                    <h4 class="footer-title">Дополнительно</h4>
+                    <a href="#" class="footer-link">Бесплатные уроки</a>
+                    <a href="#" class="footer-link">Тест на профориентацию</a>
+
+                    <a href="#" class="footer-link">Мероприятия</a>
+                    <a href="#" class="footer-link">Корпоративное обучение</a>
+                    <a href="#" class="footer-link">Партнёрская программа</a>
+                  -->
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p class="copyright">&copy; 2026 GITcube. Все права защищены.</p>
+                    <div class="footer-info">
+ <!--
+                        <span>ИНН: 1234567890</span>
+                        <span>ОГРН: 1234567890123</span>
+ -->
+                    </div>
+                    <div class="payment-methods">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-mir"></i>
+                        <i class="fab fa-cc-paypal"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="java.js"></script>
+</body>
+</html>
