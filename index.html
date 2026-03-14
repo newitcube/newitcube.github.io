@@ -127,18 +127,32 @@
   &lt;head&gt;
     &lt;meta charset=&quot;utf-8&quot;&gt;
     &lt;style&gt;
+      body { text-align: center; padding-top: 20px; }
       h1 { color: blue; }
+      button { background-color: gold; }
     &lt;/style&gt;
   &lt;/head&gt;
   &lt;body&gt;
     &lt;h1&gt;Привет!&lt;/h1&gt;
+    &lt;p&gt;Начни менять код.&lt;/p&gt;
+    &lt;div&gt;
+      &lt;p&gt;Кнопка нажата &lt;span id=&quot;counter&quot;&gt;0&lt;/span&gt; раз(а)&lt;/p&gt;
+      &lt;button onclick=&quot;incrementCounter()&quot;&gt;Нажми меня&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+      let count = 0;
+      function incrementCounter() {
+        count++;
+        document.getElementById(&#39;counter&#39;).textContent = count;
+      }
+    &lt;/script&gt;
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
                         <div class="editor-footer">
                             <div class="output-preview">
                                 <span class="output-label">Вывод:</span>
                                 <div class="output-content">
-                                    <span class="output-line">Привет!</span>
+                                    <span class="output-line">Принажатии на кнопку меняется число кликов</span>
                                 </div>
                             </div>
                         </div>
