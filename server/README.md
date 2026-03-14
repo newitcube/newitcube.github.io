@@ -28,6 +28,7 @@ USER’S MANUAL
 В приложении A приведены звуковые сигналы ошибок BIOS.
 В приложении B приведены инструкции по установке программного обеспечения.
 
+```
 Chapter 1 Overview
 1-1   Overview ..................................................................1-1
 1-2   Processor and Chipset Overview...........................1-11
@@ -125,7 +126,7 @@ A-1  BIOS Error Beep Codes ............................................... A-1
 Appendix B Software Installation Instructions
 B-1  Installing Software Programs ..................................... B-1
 B-2  Configuring SuperDoctor® III ..................................... B-2
-
+```
 
 
 ### Chapter 1: Overview
